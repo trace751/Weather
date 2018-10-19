@@ -16,7 +16,7 @@
 
 	<?php
 	$api = 'http://api.openweathermap.org/data/2.5/';
-	// $apiKey = '&appid=958743d119be11170fca1e560ce8bdc6'; API KEY REMOVED FOR SECURITY
+	// $apiKey = ''; API KEY REMOVED FOR SECURITY
 
 	if(isset($_GET['city'])){
 		$city = $_GET['city'];
