@@ -16,7 +16,7 @@
 
 	<?php
 	$api = 'http://api.openweathermap.org/data/2.5/';
-	$apiKey = '&appid=958743d119be11170fca1e560ce8bdc6';
+	// $apiKey = '&appid=958743d119be11170fca1e560ce8bdc6'; API KEY REMOVED FOR SECURITY
 
 	if(isset($_GET['city'])){
 		$city = $_GET['city'];
@@ -29,7 +29,7 @@
 
 	$jsonTranslate = json_decode($jsonData, true);
 
-	// print_r($jsonTranslate['weather'][0]['description']);
+ print_r($jsonTranslate['weather'][0]['description']);
 
 
 	?>
@@ -37,6 +37,10 @@
 	<!-- Echo out user input  -->
 
 
-	<h1><?php echo $jsonTranslate['weather'][0]['description']; ?></h1>
+	<h1><?php echo $jsonTranslate['weather'][0]['description']; 
+
+
+
+	?></h1>
 </body>
 </html>
