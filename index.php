@@ -16,7 +16,7 @@
 
 	<?php
 	$api = 'http://api.openweathermap.org/data/2.5/';
-	// $apiKey = ''; API KEY REMOVED FOR SECURITY
+	$apiKey = '&appid=958743d119be11170fca1e560ce8bdc6';
 
 	if(isset($_GET['city'])){
 		$city = $_GET['city'];
@@ -24,23 +24,31 @@
 	if(isset($_GET['country'])){
 		$country = $_GET['country'];
 	}
+	if(empty($city)){
+		echo 'enter in city';
+	}
+	if(empty($country)){
+		echo "enter in country";
+	}
 
-	$jsonData = file_get_contents($api . "weather?q=" . $city . "," . $country . $apiKey);
 
-	$jsonTranslate = json_decode($jsonData, true);
+	// Access the API
 
- print_r($jsonTranslate['weather'][0]['description']);
+	$cURL = curl_init();
+
+	curl_setopt($cURL, CURLOPT_URL, $api . "weather?q=" . $city . "," . $country . $apiKey);
+	curl_setopt($cURL, CURLOPT_RETURNTRANSFER, true);
+	$result = curl_exec($cURL);
+	
+	$jsonDecode = json_decode($result, true);
+
+
 
 
 	?>
 
 	<!-- Echo out user input  -->
-
-
-	<h1><?php echo $jsonTranslate['weather'][0]['description']; 
-
-
-
-	?></h1>
+<?php print_r($jsonDecode['weather'][0]['main']); ?>
+	
 </body>
 </html>
